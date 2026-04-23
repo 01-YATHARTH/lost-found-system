@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const BASE_URL = "https://lost-found-system-medj.onrender.com";
+
 function Dashboard() {
   const [items, setItems] = useState([]);
   const [itemName, setItemName] = useState("");
 
   const fetchItems = async () => {
-    const res = await axios.get("http://localhost:5000/api/items");
+    const res = await axios.get(`${BASE_URL}/api/items`);
     setItems(res.data);
   };
 
   const addItem = async () => {
-    await axios.post("http://localhost:5000/api/items", {
+    await axios.post(`${BASE_URL}/api/items`, {
       itemName,
       type: "Lost"
     });
@@ -19,7 +21,7 @@ function Dashboard() {
   };
 
   const deleteItem = async (id) => {
-    await axios.delete(`http://localhost:5000/api/items/${id}`);
+    await axios.delete(`${BASE_URL}/api/items/${id}`);
     fetchItems();
   };
 

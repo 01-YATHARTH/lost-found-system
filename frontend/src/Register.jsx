@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const BASE_URL = "https://lost-found-system-medj.onrender.com";
+
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -8,7 +10,7 @@ function Register() {
 
   const handleRegister = async () => {
     try {
-      await axios.post("http://localhost:5000/api/register", {
+      await axios.post(`${BASE_URL}/api/register`, {
         name,
         email,
         password
